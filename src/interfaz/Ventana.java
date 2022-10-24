@@ -698,7 +698,7 @@ public class Ventana extends javax.swing.JFrame {
                         t = lexer.yylex();
                         token = lexer.yytext();
                         if (t == null) {
-                            tablaTokens.addToken(new Token(linea, "$", null));
+                            tablaTokens.addToken(new Token(linea, null, "$", null));
                             tokens.setText(tablaTokens.contenido());
                             errores.setText(tablaErrores.contenido());
                             return;
@@ -743,12 +743,12 @@ public class Ventana extends javax.swing.JFrame {
     private Token nuevoToken(int linea, String token, ListaDeTokens t, ListaDeTokens ant) {
         boolean ban = t == ListaDeTokens.Identificador;
         if (ant == ListaDeTokens.Function && ban) {
-            return new Token(linea, "idf", token);
+            return new Token(linea, null, "idf", token);
         }
         if (ant == ListaDeTokens.Procedure && ban) {
-            return new Token(linea, "idp", token);
+            return new Token(linea, null, "idp", token);
         }
-        return new Token(linea, obtenerToken(t, token), token);
+        return new Token(linea, null, obtenerToken(t, token), token);
     }
 
     private void analisisSintactico() {
@@ -774,7 +774,7 @@ public class Ventana extends javax.swing.JFrame {
                         }
 
                         if (lt == null) {
-                            analizador.analisisSintactico(new Token(linea, "$", null));
+                            analizador.analisisSintactico(new Token(linea, null, "$", null));
                             new Analisis(this, false, analizador.obtenerTabla()).setVisible(true);
                             if (analizador.getError() != null) {
                                 errores.setText(analizador.getError());

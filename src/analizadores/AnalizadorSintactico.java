@@ -37,6 +37,8 @@ public class AnalizadorSintactico {
 
     private TablaDeSimbolos tablaDeSimbolos, tablaActual, aux;
 
+    private Analizador_Semantico semantico;
+    
     int fila, columna;
 
     String tope, celda, error;
@@ -53,6 +55,7 @@ public class AnalizadorSintactico {
         pilaPrincipal.push("$");
         pilaPrincipal.push("0");
         numeroTabla = 0;
+        semantico = new Analizador_Semantico();
     }
 
     /**
@@ -85,6 +88,9 @@ public class AnalizadorSintactico {
                 accion.add("desplazar " + t.obtenerToken() + "" + celda.substring(1, celda.length()));
                 pilaPrincipal.add(t.obtenerToken());
                 pilaPrincipal.add(celda.substring(1, celda.length()));
+                semantico.analizadorSemantico(t);
+                if (semantico.getError() != null)
+                    error = semantico.getError();
                 return;
             }
             if (celda.startsWith("r")) {

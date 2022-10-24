@@ -7,7 +7,7 @@ package analizadores;
 public class Token {
 
     private int linea;
-    private String token, nombre;
+    private String tipo, token, nombre;
 
     /**
      * Crea un nuevo token
@@ -16,8 +16,9 @@ public class Token {
      * @param token token
      * @param nombre nombre del token
      */
-    public Token(int linea, String token, String nombre) {
+    public Token(int linea, String tipo, String token, String nombre) {
         this.linea = linea;
+        this.tipo = tipo;
         this.token = token;
         this.nombre = nombre;
     }
@@ -47,6 +48,14 @@ public class Token {
      */
     public String obtenerNombre() {
         return nombre;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
 }
