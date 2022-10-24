@@ -768,8 +768,9 @@ public class Ventana extends javax.swing.JFrame {
                         lexme = lexer.yytext();
 
                         if (analizador.getError() != null) {
-                            new Analisis(this, false, analizador.obtenerTabla()).setVisible(true);
                             errores.setText(analizador.getError());
+                            new Analisis(this, false, analizador.obtenerTabla()).setVisible(true);
+                            
                             return;
                         }
 

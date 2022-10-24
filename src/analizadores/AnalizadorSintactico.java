@@ -76,7 +76,7 @@ public class AnalizadorSintactico {
             entrada.add(t.obtenerToken());
             System.out.println(celda);
             if (celda.equals("")) {
-                System.out.println("Esperaba un: " + esperas);
+                System.out.println("Esperaba un: " + esperas[fila]);
                 error = esperas[fila];
                 return;
             }
